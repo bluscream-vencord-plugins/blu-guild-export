@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+"$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "id": {
@@ -12,7 +12,7 @@
       "type": "string"
     },
     "description": {
-      "type": "null"
+    "type": "string"
     },
     "ownerId": {
       "type": "string"
@@ -49,22 +49,20 @@
     },
     "totalMembers": {
       "type": "integer"
+    },
+    "activeMembers": {
+        "type": "integer"
     }
   },
   "required": [
     "id",
     "name",
-    "icon",
     "ownerId",
     "verificationLevel",
-    "rulesChannelId",
-    "publicUpdatesChannelId",
     "preferredLocale",
     "features",
-    "vanityURLCode",
     "nsfwLevel",
     "premiumTier",
-    "premiumSubscriberCount",
     "totalMembers"
   ],
   "title": "Generated Schema",

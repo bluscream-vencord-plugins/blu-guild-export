@@ -7,7 +7,7 @@
 import { GuildMemberStore, RestAPI } from "@webpack/common";
 
 import { ExporterFunc } from "./types";
-import { sleep } from "./utils";
+import { removeNullValues, sleep } from "./utils";
 
 export const exportMembers: ExporterFunc = async ctx => {
     ctx.setProgress("Exporting members...");
@@ -36,7 +36,7 @@ export const exportMembers: ExporterFunc = async ctx => {
 
     const memberList = members || [];
     ctx.logger.info(`Found ${memberList.length} members`);
-    await ctx.save("members.json", JSON.stringify(memberList, null, 2));
+    await ctx.save("members.json", JSON.stringify(removeNullValues(memberList), null, 2));
 
     await sleep(ctx.actionDelay);
 };

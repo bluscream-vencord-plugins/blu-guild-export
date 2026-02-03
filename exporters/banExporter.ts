@@ -7,7 +7,7 @@
 import { RestAPI } from "@webpack/common";
 
 import { ExporterFunc } from "./types";
-import { sleep } from "./utils";
+import { removeNullValues, sleep } from "./utils";
 
 export const exportBans: ExporterFunc = async ctx => {
     ctx.setProgress("Exporting bans...");
@@ -41,7 +41,7 @@ export const exportBans: ExporterFunc = async ctx => {
         }
 
         ctx.logger.info(`Successfully fetched ${allBans.length} bans`);
-        await ctx.save("bans.json", JSON.stringify(allBans, null, 2));
+        await ctx.save("bans.json", JSON.stringify(removeNullValues(allBans), null, 2));
     } catch (e: any) {
         ctx.logger.error(`Failed to fetch guild bans: ${e?.message || e}`, e);
     }

@@ -7,7 +7,7 @@
 import { GuildMemberCountStore, GuildStore, UserGuildSettingsStore } from "@webpack/common";
 
 import { ExporterFunc } from "./types";
-import { sleep } from "./utils";
+import { removeNullValues, sleep } from "./utils";
 
 export const exportInfo: ExporterFunc = async ctx => {
     ctx.setProgress("Exporting general information...");
@@ -32,12 +32,12 @@ export const exportInfo: ExporterFunc = async ctx => {
         totalMembers: GuildMemberCountStore.getMemberCount(ctx.guildId),
         activeMembers: (GuildMemberCountStore as any).getOnlineCount?.(ctx.guildId) || (GuildMemberCountStore as any).getOnlineMemberCount?.(ctx.guildId),
     };
-    await ctx.save("info.json", JSON.stringify(info, null, 2));
+    await ctx.save("info.json", JSON.stringify(removeNullValues(info), null, 2));
 
     try {
         const guildSettings = (UserGuildSettingsStore as any).getAllSettings?.()?.[ctx.guildId];
         if (guildSettings) {
-            await ctx.save("settings.json", JSON.stringify(guildSettings, null, 2));
+            await ctx.save("settings.json", JSON.stringify(removeNullValues(guildSettings), null, 2));
         }
     } catch (e) {
         ctx.logger.warn("Failed to fetch guild settings", e);

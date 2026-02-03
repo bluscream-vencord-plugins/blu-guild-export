@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "type": "object",
@@ -29,10 +29,10 @@
             "type": "integer"
           },
           "banner": {
-            "type": "null"
+            "type": "string"
           },
           "accent_color": {
-            "type": "null"
+            "type": "integer"
           },
           "global_name": {
             "type": [
@@ -41,22 +41,22 @@
             ]
           },
           "avatar_decoration_data": {
-            "type": "null"
+            "type": "object"
           },
           "collectibles": {
-            "type": "null"
+            "type": "object"
           },
           "display_name_styles": {
-            "type": "null"
+            "type": "object"
           },
           "banner_color": {
-            "type": "null"
+            "type": "string"
           },
           "clan": {
-            "type": "null"
+            "type": "object"
           },
           "primary_guild": {
-            "type": "null"
+            "type": "object"
           }
         },
         "required": [
@@ -75,8 +75,7 @@
       }
     },
     "required": [
-      "user",
-      "reason"
+      "user"
     ]
   },
   "title": "Generated Schema",

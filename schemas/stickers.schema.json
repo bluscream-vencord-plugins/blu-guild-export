@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "array",
   "items": {
     "type": "object",
@@ -34,7 +34,6 @@
       "tags",
       "type",
       "name",
-      "description",
       "format_type",
       "guild_id",
       "available"

@@ -7,7 +7,7 @@
 import { EmojiStore, GuildStore, IconUtils, RestAPI, SoundboardStore, StickersStore } from "@webpack/common";
 
 import { ExporterFunc } from "./types";
-import { downloadAsset, sanitize, sleep } from "./utils";
+import { downloadAsset, removeNullValues, sanitize, sleep } from "./utils";
 
 export const exportEmojis: ExporterFunc = async ctx => {
     ctx.setProgress("Exporting emojis...");
@@ -29,7 +29,7 @@ export const exportEmojis: ExporterFunc = async ctx => {
 
     const emojiList = emojis || [];
     ctx.logger.info(`Found ${emojiList.length} emojis`);
-    await ctx.save("emojis.json", JSON.stringify(emojiList, null, 2));
+    await ctx.save("emojis.json", JSON.stringify(removeNullValues(emojiList), null, 2));
 
     for (const emoji of emojiList) {
         const ext = emoji.animated ? ".gif" : ".png";
@@ -63,7 +63,7 @@ export const exportStickers: ExporterFunc = async ctx => {
 
     const stickerList = stickers || [];
     ctx.logger.info(`Found ${stickerList.length} stickers`);
-    await ctx.save("stickers.json", JSON.stringify(stickerList, null, 2));
+    await ctx.save("stickers.json", JSON.stringify(removeNullValues(stickerList), null, 2));
 
     for (const sticker of stickerList) {
         // Handle both API (format_type) and Store (formatType) camelCase/snake_case
@@ -107,7 +107,7 @@ export const exportSounds: ExporterFunc = async ctx => {
         };
     });
 
-    await ctx.save("sounds.json", JSON.stringify(processedSounds, null, 2));
+    await ctx.save("sounds.json", JSON.stringify(removeNullValues(processedSounds), null, 2));
 
     for (const sound of soundList) {
         const soundId = (sound as any).sound_id || (sound as any).soundId;

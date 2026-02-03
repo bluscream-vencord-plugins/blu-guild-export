@@ -38,3 +38,28 @@ export async function downloadAsset(url: string, path: string, ctx: ExporterCont
         ctx.logger.error(`Error downloading asset: ${url}`, e);
     }
 }
+
+/**
+ * Recursively removes null values from objects and arrays
+ */
+export function removeNullValues<T>(obj: T): T {
+    if (obj === null || obj === undefined) {
+        return obj;
+    }
+
+    if (Array.isArray(obj)) {
+        return obj.map(item => removeNullValues(item)).filter(item => item !== null) as T;
+    }
+
+    if (typeof obj === "object") {
+        const result: any = {};
+        for (const [key, value] of Object.entries(obj)) {
+            if (value !== null) {
+                result[key] = removeNullValues(value);
+            }
+        }
+        return result as T;
+    }
+
+    return obj;
+}
