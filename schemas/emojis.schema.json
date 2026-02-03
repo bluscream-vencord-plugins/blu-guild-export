@@ -40,7 +40,6 @@
       "name",
       "require_colons",
       "available",
-      "roles",
       "managed",
       "type"
     ]
@@ -56,7 +55,6 @@
         "name": "Approval",
         "require_colons": true,
         "available": true,
-        "roles": [],
         "managed": false,
         "type": 1
       }

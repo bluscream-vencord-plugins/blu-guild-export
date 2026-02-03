@@ -40,25 +40,33 @@ export async function downloadAsset(url: string, path: string, ctx: ExporterCont
 }
 
 /**
- * Recursively removes null values from objects and arrays
+ * Recursively removes null values and empty objects/arrays from objects and arrays
  */
-export function removeNullValues<T>(obj: T): T {
+export function removeNullValues<T>(obj: T): T | null {
     if (obj === null || obj === undefined) {
-        return obj;
+        return null;
     }
 
     if (Array.isArray(obj)) {
-        return obj.map(item => removeNullValues(item)).filter(item => item !== null) as T;
+        const cleanedArray = obj
+            .map(item => removeNullValues(item))
+            .filter(item => item !== null && item !== undefined);
+
+        return cleanedArray.length > 0 ? (cleanedArray as unknown as T) : null;
     }
 
     if (typeof obj === "object") {
         const result: any = {};
+        let hasProps = false;
+
         for (const [key, value] of Object.entries(obj)) {
-            if (value !== null) {
-                result[key] = removeNullValues(value);
+            const cleanedValue = removeNullValues(value);
+            if (cleanedValue !== null && cleanedValue !== undefined) {
+                result[key] = cleanedValue;
+                hasProps = true;
             }
         }
-        return result as T;
+        return hasProps ? (result as T) : null;
     }
 
     return obj;

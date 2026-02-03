@@ -60,7 +60,6 @@
     "ownerId",
     "verificationLevel",
     "preferredLocale",
-    "features",
     "nsfwLevel",
     "premiumTier",
     "totalMembers"
@@ -72,7 +71,6 @@
       "id": "747967102895390741",
       "name": "Flatscreen to VR Modding Community",
       "icon": "4ed9b9516ae3bb878c8e15f4ca089141",
-      "description": null,
       "ownerId": "377193438866833408",
       "verificationLevel": 2,
       "rulesChannelId": "976580026751406090",

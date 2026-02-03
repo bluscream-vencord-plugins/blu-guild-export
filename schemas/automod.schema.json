@@ -33,8 +33,7 @@
             }
           },
           "required": [
-            "type",
-            "metadata"
+            "type"
           ]
         }
       },
@@ -69,10 +68,7 @@
       "event_type",
       "actions",
       "trigger_type",
-      "enabled",
-      "exempt_roles",
-      "exempt_channels",
-      "trigger_metadata"
+      "enabled"
     ]
   },
   "title": "Generated Schema",
@@ -87,8 +83,7 @@
         "event_type": 1,
         "actions": [
           {
-            "type": 1,
-            "metadata": {}
+            "type": 1
           },
           {
             "type": 2,
@@ -108,8 +103,7 @@
         "exempt_channels": [
           "1218575234399993937",
           "896433099100016750"
-        ],
-        "trigger_metadata": {}
+        ]
       }
     ]
   ]

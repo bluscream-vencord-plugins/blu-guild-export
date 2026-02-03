@@ -33,8 +33,7 @@
             "required": [
               "id",
               "type",
-              "name",
-              "permissionOverwrites_"
+              "name"
             ]
           }
         },
@@ -214,7 +213,6 @@
               "name",
               "nsfw_",
               "parent_id",
-              "permissionOverwrites_",
               "position_",
               "rateLimitPerUser_",
               "type"
@@ -334,7 +332,6 @@
               "name",
               "nsfw_",
               "parent_id",
-              "permissionOverwrites_",
               "position_",
               "rateLimitPerUser_",
               "type",
@@ -356,10 +353,7 @@
     }
   },
   "required": [
-    "4",
     "id",
-    "SELECTABLE",
-    "VOCAL",
     "count"
   ],
   "title": "Generated Schema",
@@ -373,8 +367,7 @@
             "id": "null",
             "type": 4,
             "name": "Uncategorized",
-            "guild_id": null,
-            "permissionOverwrites_": {}
+            "guild_id": null
           }
         }
       ],
@@ -385,7 +378,6 @@
             "flags_": 1,
             "guild_id": "747967102895390741",
             "iconEmoji": {
-              "id": null,
               "name": "🤖"
             },
             "id": "896433099100016750",
@@ -422,7 +414,6 @@
             },
             "position_": 0,
             "rateLimitPerUser_": 0,
-            "topic_": null,
             "type": 0
           },
           "comparator": 0
@@ -435,7 +426,6 @@
             "flags_": 0,
             "guild_id": "747967102895390741",
             "iconEmoji": {
-              "id": null,
               "name": "🎤"
             },
             "id": "838470186067165214",
@@ -453,7 +443,6 @@
             },
             "position_": 0,
             "rateLimitPerUser_": 0,
-            "rtcRegion": null,
             "type": 2,
             "userLimit_": 0
           },
