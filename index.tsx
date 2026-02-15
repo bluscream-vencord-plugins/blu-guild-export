@@ -1,9 +1,3 @@
-/*
- * Vencord, a Discord client mod
- * Copyright (c) 2026 Vendicated and contributors
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
-
 import { NavContextMenuPatchCallback } from "@api/ContextMenu";
 import { popNotice, showNotice } from "@api/Notices";
 import { definePluginSettings } from "@api/Settings";
@@ -29,21 +23,26 @@ import { sanitize } from "./exporters/utils";
 import { ExportModal } from "./ExportModal";
 import { getNative } from "./nativeUtils";
 
-const pluginId = "guildExport";
-const pluginName = "Guild Export";
-const logger = new Logger(pluginName, "#7289da");
+export const pluginInfo = {
+    id: "guildExport",
+    name: "Guild Export",
+    description: "Export guild structure and data",
+    color: "#7289da"
+};
+
+const logger = new Logger(pluginInfo.name, pluginInfo.color);
 const EXPORT_NOTICE_BUTTON_TEXT = "Abort Export";
 
 export const settings = definePluginSettings({
     exportDirectory: {
         type: OptionType.STRING,
-        description: "The directory to export data to (if not using ZIP)",
+        description: "Export guild structure and data",
         default: "C:\\GuildExports",
         restartNeeded: false,
     },
     exportMode: {
         type: OptionType.SELECT,
-        description: "How to export the data",
+        description: "Export guild structure and data",
         options: [
             { label: "Folder", value: "Folder" },
             { label: "Zip (Save)", value: "ZipSave", default: true },
@@ -53,67 +52,67 @@ export const settings = definePluginSettings({
     },
     sendToChannelId: {
         type: OptionType.STRING,
-        description: "Channel ID to send the ZIP to (if using Zip (Send))",
+        description: "Export guild structure and data",
         default: "",
         restartNeeded: false,
     },
     exportInfo: {
         type: OptionType.BOOLEAN,
-        description: "Export general guild info",
+        description: "Export guild structure and data",
         default: true,
         restartNeeded: false,
     },
     exportChannels: {
         type: OptionType.BOOLEAN,
-        description: "Export channels and their structures",
+        description: "Export guild structure and data",
         default: true,
         restartNeeded: false,
     },
     exportRoles: {
         type: OptionType.BOOLEAN,
-        description: "Export roles and their permissions",
+        description: "Export guild structure and data",
         default: true,
         restartNeeded: false,
     },
     exportAutomod: {
         type: OptionType.BOOLEAN,
-        description: "Export automod rules",
+        description: "Export guild structure and data",
         default: true,
         restartNeeded: false,
     },
     exportBans: {
         type: OptionType.BOOLEAN,
-        description: "Export banned users",
+        description: "Export guild structure and data",
         default: true,
         restartNeeded: false,
     },
     exportMembers: {
         type: OptionType.BOOLEAN,
-        description: "Export members (cached only)",
+        description: "Export guild structure and data",
         default: true,
         restartNeeded: false,
     },
     exportEmojis: {
         type: OptionType.BOOLEAN,
-        description: "Export custom emojis",
+        description: "Export guild structure and data",
         default: true,
         restartNeeded: false,
     },
     exportStickers: {
         type: OptionType.BOOLEAN,
-        description: "Export custom stickers",
+        description: "Export guild structure and data",
         default: true,
         restartNeeded: false,
     },
     exportSounds: {
         type: OptionType.BOOLEAN,
-        description: "Export soundboard sounds",
+        description: "Export guild structure and data",
         default: true,
         restartNeeded: false,
     },
     filenameFormat: {
         type: OptionType.SELECT,
-        description: "How to name exported asset files",
+        description: "Export guild structure and data",
         options: [
             { label: "IDs (Unique, Safe)", value: "IDs", default: true },
             { label: "Names (Sanitized)", value: "Names" },
@@ -122,7 +121,7 @@ export const settings = definePluginSettings({
     },
     actionDelay: {
         type: OptionType.SLIDER,
-        description: "Delay between API calls and asset downloads (ms)",
+        description: "Export guild structure and data",
         markers: [0, 100, 250, 500, 1000, 2000],
         default: 250,
         restartNeeded: false,
@@ -291,11 +290,11 @@ const GuildContextMenu: NavContextMenuPatchCallback = (children, { guild }) => {
 };
 
 export default definePlugin({
-    name: pluginName,
-    description: "Export guild info, assets, and settings to a ZIP file.",
+    name: "Guild Export",
+    description: "Export guild structure and data",
     authors: [
-        { name: "Bluscream", id: 467777925790564352n },
-        { name: "Antigravity", id: 0n }
+        { name: "Guild Export", id: 467777925790564352n },
+        { name: "Guild Export", id: 0n }
     ],
     settings,
     contextMenus: {
